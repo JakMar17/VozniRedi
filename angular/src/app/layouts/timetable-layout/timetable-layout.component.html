@@ -1,0 +1,16 @@
+<main>
+  <div class="container pl-2 pr-2 pt-5">
+    <div class="alert-info p-3">
+      Aplikacija trenutno prikazuje podatke naslednjih avtobusnih prevoznikov:
+      Nomago.
+    </div>
+  </div>
+  <app-search-box
+    *ngIf="searchboxViewState == 'show'"
+    [postajalisca]="postajalisca"
+  ></app-search-box>
+  <app-loading *ngIf="searchboxViewState == 'loading'"></app-loading>
+
+  <app-loading *ngIf="timetableViewState == 'loading'"></app-loading>
+  <app-timetable-card></app-timetable-card>
+</main>

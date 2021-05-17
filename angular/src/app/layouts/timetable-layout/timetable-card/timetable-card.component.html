@@ -1,0 +1,45 @@
+<div *ngFor="let timetable of timetables" class="container p-2">
+  <div class="shadow card p-2 pt-4">
+    <div class="ml-5 mr-5 mb-3">
+      <h2 class="row w-100" style="padding-right: 0">
+        <div class="col text-start">
+          {{ timetable.startTime | slice: 0:5 }}
+        </div>
+        <div class="col"></div>
+        <div class="col text-right" style="padding-right: 0; margin-right: 0">
+          {{ timetable.endTime | slice: 0:5 }}
+        </div>
+      </h2>
+      <hr />
+      <h4 class="row w-100">
+        <div class="col text-start">{{ timetable.startStop }}</div>
+        <div class="col"></div>
+        <div class="col text-right" style="padding-right: 0">
+          {{ timetable.endStop }}
+        </div>
+      </h4>
+
+      <div
+        class="
+          text-center
+          align-items-center
+          text
+          d-flex
+          align-items-center
+          mt-3
+        "
+      >
+        <i class="ri-timer-line"></i>
+        Trajanje: {{ timetable.duration | slice: 0:5 }}
+      </div>
+      <div class="text-center text d-flex align-items-center">
+        <i class="ri-route-line"></i>
+        {{ timetable.noOfStops | transfers }}
+      </div>
+      <div class="text-center text d-flex align-items-center">
+        <i class="ri-stop-circle-line"></i>
+        Število vmesnih postajališč: {{ timetable.stations | noOfStops }}
+      </div>
+    </div>
+  </div>
+</div>
