@@ -31,22 +31,4 @@ public class StationDto {
         }
         this.stops = stops;
     }
-
-    //    public StationDto(String startStation, String endStation, String startTime, String endTime, Integer rideTime, Integer waitTime, StopDto[] stops) {
-//        this.startStation = startStation;
-//        this.endStation = endStation;
-//        try {
-//            this.startTime = LocalTime.parse(startStation, timeFormatter);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            this.endTime = LocalTime.parse(endStation, timeFormatter);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        this.rideTime = rideTime;
-//        this.waitTime = waitTime;
-//        this.stops = stops;
-//    }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ErrorWrapper } from '@data/backend/models/error-wrapper';
 import { Postajalisce } from '@data/backend/models/postajalisce';
 import { Timetable } from '@data/backend/models/timetable';
 import { Subject } from 'rxjs';
@@ -9,6 +10,9 @@ import { Subject } from 'rxjs';
 export class TimetableService {
   public timetables: Subject<Timetable[]> = new Subject();
   public postajalisca: Subject<Postajalisce[]> = new Subject();
+
+  public searchErrorObservable: Subject<ErrorWrapper> = new Subject();
+  public timetableErrorObservable: Subject<ErrorWrapper> = new Subject();
   
   public searchView: Subject<ShowComponentState> = new Subject();
   public timetableView: Subject<ShowComponentState> = new Subject();

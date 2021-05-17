@@ -12,5 +12,22 @@
   <app-loading *ngIf="searchboxViewState == 'loading'"></app-loading>
 
   <app-loading *ngIf="timetableViewState == 'loading'"></app-loading>
-  <app-timetable-card></app-timetable-card>
+  <app-timetable-card
+    *ngFor="let timetable of timetables"
+    [timetable]="timetable"
+  ></app-timetable-card>
+
+  <div
+    *ngIf="timetableViewState == 'show' && timetables?.length == 0"
+    class="container p-2"
+  >
+    <div class="shadow card p-2 pt-4">
+      <h4 class="text-center">
+        <i class="ri-forbid-2-line"></i>
+      </h4>
+      <h4 class="text-center" style="font-weight: 200;">
+        Za izbrani postaji na izbran datum ne najdem povezav.
+      </h4>
+    </div>
+  </div>
 </main>

@@ -1,4 +1,4 @@
-<div *ngFor="let timetable of timetables" class="container p-2">
+<div class="container p-2">
   <div class="shadow card p-2 pt-4">
     <div class="ml-5 mr-5 mb-3">
       <h2 class="row w-100" style="padding-right: 0">
@@ -32,14 +32,67 @@
         <i class="ri-timer-line"></i>
         Trajanje: {{ timetable.duration | slice: 0:5 }}
       </div>
-      <div class="text-center text d-flex align-items-center">
+      <a
+        (click)="open(content)"
+        class="text-center text d-flex align-items-center"
+      >
         <i class="ri-route-line"></i>
         {{ timetable.noOfStops | transfers }}
-      </div>
-      <div class="text-center text d-flex align-items-center">
+      </a>
+      <a
+        (click)="open(content)"
+        class="text-center text d-flex align-items-center"
+      >
         <i class="ri-stop-circle-line"></i>
         Število vmesnih postajališč: {{ timetable.stations | noOfStops }}
-      </div>
+      </a>
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Vmesni prestopi in postajališča
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>Potovalni čas: {{ timetable.duration | slice: 0:5 }}</h5>
+    <div *ngFor="let station of timetable.stations; let i = index">
+      <h4 *ngIf="i != 0">{{ i }}. prestop</h4>
+      <h5>
+        {{ station.startStation }} ({{ station.startTime | slice: 0:5 }}) -
+        {{ station.endStation }} ({{ station.endTime | slice: 0:5 }})
+      </h5>
+      <h6 *ngIf="station.waitTime">
+        Čakalni čas: {{ station.waitTime }} minut
+      </h6>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Postajališče</th>
+            <th class="text-right" scope="col">Prihod</th>
+            <th class="text-right" scope="col">Odhod</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stop of station.stops">
+            <th scope="row">{{ stop.inSequence }}</th>
+            <td>{{ stop.station }}</td>
+            <td class="text-right">{{ stop.arrivingTime | slice: 0:5 }}</td>
+            <td class="text-right">{{ stop.departureTime | slice: 0:5 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>

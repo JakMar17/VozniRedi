@@ -13,41 +13,33 @@
           {{ e }}
         </div>
       </div>
-      <div class="row w-100 no-padding" style="padding: 0; margin: 0">
-        <datalist id="postajalisca">
-          <option
-            *ngFor="let postajalisce of postajalisca"
-            [value]="postajalisce.name"
-          ></option>
-        </datalist>
-        <div
-          class="input-group mb-3 col-lg-6 nopadding"
-          style="padding-left: 0"
-        >
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Vstop</span>
-          </div>
-          <input
-            list="postajalisca"
-            type="text"
-            class="form-control"
-            [(ngModel)]="vstopInput"
-          />
+      <datalist id="postajalisca">
+        <option
+          *ngFor="let postajalisce of postajalisca"
+          [value]="postajalisce.name"
+        ></option>
+      </datalist>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Vstop</span>
         </div>
-        <div
-          class="input-group mb-3 col-lg-6 nopadding nomargin"
-          style="padding-right: 0"
-        >
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Izstop</span>
-          </div>
-          <input
-            [(ngModel)]="izstopInput"
-            list="postajalisca"
-            type="text"
-            class="form-control"
-          />
+        <input
+          list="postajalisca"
+          type="text"
+          class="form-control"
+          [(ngModel)]="vstopInput"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Izstop</span>
         </div>
+        <input
+          [(ngModel)]="izstopInput"
+          list="postajalisca"
+          type="text"
+          class="form-control"
+        />
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">

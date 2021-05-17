@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class PostajalisceDto {
     private Integer id;
-    private String code;
     private String name;
     private Double latitude;
     private Double longitude;

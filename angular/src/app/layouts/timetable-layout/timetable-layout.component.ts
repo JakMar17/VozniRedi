@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@data/backend/api.service';
 import { Postajalisce } from '@data/backend/models/postajalisce';
+import { Timetable } from '@data/backend/models/timetable';
 import { Subject } from 'rxjs';
 import {
   ShowComponentState,
@@ -15,6 +16,7 @@ import {
 export class TimetableLayoutComponent implements OnInit {
   public searchboxViewState: ShowComponentState = 'not_show';
   public timetableViewState: ShowComponentState = 'not_show';
+  public timetables: Timetable[] | null = null;
   public postajalisca: Postajalisce[] = [];
 
   constructor(
@@ -30,6 +32,10 @@ export class TimetableLayoutComponent implements OnInit {
 
     timetableService.postajalisca.subscribe(
       (data) => (this.postajalisca = data)
+    );
+
+    this.timetableService.timetables.subscribe(
+      (data) => (this.timetables = data)
     );
 
     timetableService.searchView.next('loading');

@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '@data/backend/api.service';
+import { ErrorWrapper } from '@data/backend/models/error-wrapper';
 import { Postajalisce } from '@data/backend/models/postajalisce';
 import { TimetableService } from 'src/app/services/timetable.service';
 
@@ -18,7 +19,15 @@ export class SearchBoxComponent implements OnInit {
 
   public error: string[] | null = null;
 
-  constructor(private apiService: ApiService, private datePipe: DatePipe) {}
+  constructor(
+    private apiService: ApiService,
+    private datePipe: DatePipe,
+    timetableServices: TimetableService
+  ) {
+    timetableServices.searchErrorObservable.subscribe(
+      (er) => (this.error = er.errors)
+    );
+  }
 
   ngOnInit(): void {}
 
@@ -32,7 +41,7 @@ export class SearchBoxComponent implements OnInit {
     else if (to == null) this.error = ['Izstopna postaja mora biti izbrana'];
     else if (date == null) {
     } else {
-      this.apiService.getTimetable(+from.code, +to.code, date);
+      this.apiService.getTimetable(from.id, to.id, date);
     }
   }
 

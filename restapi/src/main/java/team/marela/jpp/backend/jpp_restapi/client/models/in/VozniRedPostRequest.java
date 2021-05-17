@@ -1,8 +1,6 @@
 package team.marela.jpp.backend.jpp_restapi.client.models.in;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;

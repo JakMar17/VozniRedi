@@ -1,11 +1,9 @@
 package team.marela.jpp.backend.jpp_restapi.dtos.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 @Data
 @AllArgsConstructor
